@@ -1,0 +1,5 @@
+godot_headers
+godot-cpp
+plugins/**
+projects/**
+bin/x11/*

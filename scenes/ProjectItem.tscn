@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/ProjectItem.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.372549, 0.447059, 0.501961, 1 )
+
+[node name="ProjectItem" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+_default_color = Color( 0.423529, 0.521569, 0.670588, 1 )
+_warning_color = Color( 0.894118, 0.423529, 0.313726, 1 )
+_success_color = Color( 0.415686, 0.85098, 0.462745, 1 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_right = 14.0
+margin_bottom = 14.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProjectStatus" type="CheckBox" parent="PanelContainer"]
+margin_right = 112.0
+margin_bottom = 24.0
+disabled = true
+text = "Project-Label"
+[connection signal="pressed" from="PanelContainer/ProjectStatus" to="." method="_on_ProjectStatus_pressed"]

@@ -1,0 +1,46 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "VBoxContainer",
+"class": "ProjectPanel",
+"language": "GDScript",
+"path": "res://scripts/ProjectPanel.gd"
+}, {
+"base": "Node",
+"class": "ProjectStatus",
+"language": "GDScript",
+"path": "res://ProjectStatus.gd"
+}, {
+"base": "Node",
+"class": "ProjectStatusList",
+"language": "GDScript",
+"path": "res://ProjectStatusList.gd"
+} ]
+_global_script_class_icons={
+"ProjectPanel": "",
+"ProjectStatus": "",
+"ProjectStatusList": ""
+}
+
+[application]
+
+config/name="plugin_manager"
+run/main_scene="res://scenes/UI.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://scripts/Global.gd"
+Installer="*res://bin/installer.gdns"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

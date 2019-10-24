@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Header.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/ProjectPanel.gd" type="Script" id=2]
+[ext_resource path="res://scenes/ProjectItem.tscn" type="PackedScene" id=3]
+
+[node name="ProjectPanel" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+_packed_project_item = ExtResource( 3 )
+
+[node name="Header" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 44.0
+_label = "Projects"
+
+[node name="ProjectList" type="VBoxContainer" parent="."]
+margin_top = 48.0
+margin_right = 1024.0
+margin_bottom = 576.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="UpdateButton" type="Button" parent="."]
+margin_top = 580.0
+margin_right = 1024.0
+margin_bottom = 600.0
+text = "Update"
+[connection signal="pressed" from="UpdateButton" to="." method="_on_UpdateButton_pressed"]

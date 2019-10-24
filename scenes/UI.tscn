@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Header.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/PluginList.gd" type="Script" id=2]
+[ext_resource path="res://scenes/ProjectPanel.tscn" type="PackedScene" id=3]
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 593.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProjectPanel" parent="Background/HBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 503.0
+margin_bottom = 586.0
+
+[node name="PluginContainer" type="VBoxContainer" parent="Background/HBoxContainer"]
+margin_left = 507.0
+margin_right = 1010.0
+margin_bottom = 586.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PluginHeader" parent="Background/HBoxContainer/PluginContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 503.0
+margin_bottom = 44.0
+_label = "Plugins"
+
+[node name="PluginList" type="ItemList" parent="Background/HBoxContainer/PluginContainer"]
+margin_top = 48.0
+margin_right = 503.0
+margin_bottom = 586.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+_project_panel_node_path = NodePath("../../ProjectPanel")
+[connection signal="item_selected" from="Background/HBoxContainer/PluginContainer/PluginList" to="Background/HBoxContainer/PluginContainer/PluginList" method="_on_PluginList_item_selected"]
