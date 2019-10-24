@@ -2,15 +2,30 @@ extends Node
 
 export var _plugin_folder_path = "res://plugins/"
 export var _project_folder_path = "res://projects/"
+export var _template_plugin_path = "res://plugin_template/"
 
 export var _plugins : Array
 export var _projects : Array
 export var _projects_plugins_installed : Dictionary
 
+var _plugin_folder_path_abs : String
+var _project_folder_path_abs : String
+var _template_plugin_path_abs : String
+
 func _ready():
 	createFolderArray(_plugins, _plugin_folder_path)
 	createFolderArray(_projects, _project_folder_path)
 	checkProjectsForPlugins()
+	var dir = Directory.new()
+	dir.open("")
+	var root_path = dir.get_current_dir()
+	
+	_plugin_folder_path_abs = makeAbsolutePath(root_path, _plugin_folder_path)
+	_project_folder_path_abs = makeAbsolutePath(root_path, _project_folder_path)
+	_template_plugin_path_abs = makeAbsolutePath(root_path, _template_plugin_path)
+
+func makeAbsolutePath(root_path : String, rel_path : String) -> String:
+	return root_path + "/" + rel_path.split("res://")[1]
 
 # gets all folders in path, adds them to array
 func createFolderArray(arr : Array, path : String) -> void:

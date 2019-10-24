@@ -11,6 +11,8 @@ namespace godot {
     public:
         String _source_path;
         String _target_path;
+
+        String _plugin_template_path;
     private:
     public:
         static void _register_methods();
@@ -20,6 +22,7 @@ namespace godot {
 
         void _init();
         void copyDirectory();
+        void createPlugin(String plugin_name);
 
     private:
     };

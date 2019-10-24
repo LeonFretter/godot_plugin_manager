@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Header.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/PluginList.gd" type="Script" id=2]
 [ext_resource path="res://scenes/ProjectPanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/NewButton.gd" type="Script" id=4]
+[ext_resource path="res://scenes/PopupNewPlugin.tscn" type="PackedScene" id=5]
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
@@ -50,9 +52,18 @@ _label = "Plugins"
 [node name="PluginList" type="ItemList" parent="Background/HBoxContainer/PluginContainer"]
 margin_top = 48.0
 margin_right = 503.0
-margin_bottom = 586.0
+margin_bottom = 562.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 2 )
 _project_panel_node_path = NodePath("../../ProjectPanel")
+
+[node name="NewButton" type="Button" parent="Background/HBoxContainer/PluginContainer"]
+margin_top = 566.0
+margin_right = 503.0
+margin_bottom = 586.0
+text = "New"
+script = ExtResource( 4 )
+_popup_packed = ExtResource( 5 )
 [connection signal="item_selected" from="Background/HBoxContainer/PluginContainer/PluginList" to="Background/HBoxContainer/PluginContainer/PluginList" method="_on_PluginList_item_selected"]
+[connection signal="pressed" from="Background/HBoxContainer/PluginContainer/NewButton" to="Background/HBoxContainer/PluginContainer/NewButton" method="_on_NewButton_pressed"]
